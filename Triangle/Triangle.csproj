@@ -7,14 +7,15 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <WasmWebGpuBuild>$(MSBuildThisFileDirectory)..\..\wasm_webgpu\</WasmWebGpuBuild>
-	  <EmccExtraArgs>$(WasmWebGpuBuild)build\libwebgpu.a -I$(WasmWebGpuBuild)lib\ --js-library $(WasmWebGpuBuild)lib\lib_webgpu.js ..\Interop\ClassLibrary1\constants.c -s USE_SDL=0</EmccExtraArgs>
+	  <EmccExtraArgs>$(WasmWebGpuBuild)build\libwebgpu.a -I$(WasmWebGpuBuild)lib\ --js-library $(WasmWebGpuBuild)lib\lib_webgpu.js ..\WebGpu\constants.c -s USE_SDL=0</EmccExtraArgs>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Interop\ClassLibrary1\WebGpu.csproj" />
+    <ProjectReference Include="..\WebGpu\WebGpu.csproj" />
   </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.DotNet.ILCompiler.LLVM" Version="7.0.0-*" />
-		<PackageReference Include="runtime.win-x64.Microsoft.DotNet.ILCompiler.LLVM" Version="7.0.0-*" />
+		<PackageReference Include="Microsoft.DotNet.ILCompiler.LLVM" Version="8.0.0-*" />
+		<PackageReference Include="runtime.win-x64.Microsoft.DotNet.ILCompiler.LLVM" Version="8.0.0-*" />
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="8.0.0-*" Condition="'$(ILLinkTargetsPath)' == ''" />
 	</ItemGroup>
 </Project>
